@@ -1,0 +1,45 @@
+/* ESTILOS CSS */
+
+h1{
+    text-transform: uppercase;
+    font-size: 1.5em;
+    margin: 30px 0 40px;
+}
+
+.fieldset_content{
+    max-width: 600px;
+}
+.fieldset_content label, p{
+    display: inline-block;
+    width: 200px;
+    padding: 8px 0;
+    margin: 0;
+}
+
+.checkbox{ display: inline; }
+.checkbox label{ width: inherit; }
+
+.fieldset_content input[type="text"], .main__text input[type="email"]{
+    width: 200px;
+    height: 20px;
+}
+
+.fieldset_content select{
+    width: 210px;
+    height: 25px;
+}
+
+.fieldset_content input[type="checkbox"]{
+    margin-left: 8px;
+}
+
+.fieldset_content input[type="submit"]{
+    margin-top: 40px;
+    padding: 5px 15px;
+}
+
+#mensaje{
+    margin: 30px 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}

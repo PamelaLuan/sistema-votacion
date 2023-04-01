@@ -1,0 +1,72 @@
+-------------------
+SISTEMA DE VOTACIÓN
+
+- Para el desarrollo del proyecto utilice el programa XAMPP como proveedor de servicios. En cuanto a la creación de la base de datos, lo hice a través de phpMyAdmin 5.1.1
+
+- php version: 8.1.2
+
+- base de datos: MySql, servidor Apache 2.4.52
+
+
+----------------------------
+PASOS DE INSTALCIÓN EN LOCAL
+
+1. Descargar el proyecto desde GitHub
+
+- Descargar el ZIP y descomprimir, luego pasar al punto 2.
+
+- Si se clona el repositorio se debe abrir la terminal en la carpeta donde se guardará el proyecto (punto 2).
+
+
+2. Ubicar la carpeta del proyecto en el servidor local (XAMPP)
+
+- Dirigirse a la carpeta xampp ubicada comúnmente en la carpeta del disco C:
+
+- Dentro acceder a la carpeta 'htdocs' y crear una carpeta para proyectos PHP. En esta carpeta se guardará la carpeta raíz del proyecto.
+
+- En caso de haberla descomprimido moverla dentro de la carpeta creada. Por contrario, clonar el repositorio en la carpeta.
+
+
+3. Crear la base de datos que utilizará el proyecto
+
+- Dentro de la carpeta 'sql' se encuentra el script de la base de datos ha ejecutar. 
+ 
+- Antes, se deben iniciar los procesos tanto del servidor como de la base de datos, en el panel de control de xampp. Luego dirigirse al administrador (phpMyAdmin), seleccionar la opción SQL, copiar y ejecutar el script.
+
+- La base de datos a utilizar se llama 'sistema_votacion'.
+
+
+4. Variables de conexion
+
+- La conexion con la base de datos se realiza en el archivo 'conexion.php' ubicado en la carpeta 'accesoDatos'.
+
+- Al final del código del archivo se encuentra la función para la conexion con la base de datos. 
+
+- En mi caso utilice el usuario 'root' sin contraseña y al ser local, 'localhost'. En caso de contar con otro usuario y contraseña para acceder a la base de datos se deben modificar la variable $user y $pass.
+
+
+5. Acceder a la url del proyecto desde el navegador
+
+- En el navegador dirigirse a la url http://localhost/[nombre carpeta de proyectos]
+
+- Donde [nombre carpeta de proyectos] se refiere a la carpeta creada para proyectos PHP en el punto 2.
+
+- En el navegador aparecerá la carpeta raiz del proyecto sistema-de-votacion. Al acceder aparecerá la página del formulario de votación.
+
+
+
+----------------------
+CONTENIDO DEL PROYECTO
+
+El proyecto cuenta con un archivo 'index.php' y cuatro carpetas.
+
+	index.php: corresponde al formulario de votación en HTML.
+
+	Carpeta 'css': contiene estilos sencillos que afectan al HTML del archivo index.php
+	
+	Carpeta 'js': contiene el código JavaScript que conecta el archivo HTML con los pocesos en PHP.
+
+	Carpeta 'accesoDatos': contiene los procesos en PHP para manipular y acceder a los datos guardados en la base de datos.
+
+	Carpeta 'sql': contiene el script de la base de datos.
+

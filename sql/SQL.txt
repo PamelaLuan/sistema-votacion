@@ -1,0 +1,106 @@
+CREATE DATABASE sistema_votacion;
+
+USE sistema_votacion;
+
+CREATE TABLE IF NOT EXISTS region(
+	id_region INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	region VARCHAR(200) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS comuna(
+	id_comuna INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	comuna VARCHAR(200) NOT NULL,
+	region_id INT
+);
+
+CREATE TABLE IF NOT EXISTS candidato(
+	id_candidato INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	nombre_candidato VARCHAR(250) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS formulario(
+	id_formulario INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	nombre_completo VARCHAR(250) NOT NULL,
+	alias VARCHAR(100) NOT NULL,
+	rut VARCHAR(11) NOT NULL UNIQUE,
+	email VARCHAR(250) NOT NULL,
+	redes_referencia TEXT NOT NULL,
+	region_id INT,
+	comuna_id INT,
+	candidato_id INT
+);
+
+ALTER TABLE comuna ADD FOREIGN KEY (region_id) REFERENCES region(id_region);
+
+ALTER TABLE formulario ADD FOREIGN KEY (region_id) REFERENCES region(id_region);
+
+ALTER TABLE formulario ADD FOREIGN KEY (comuna_id) REFERENCES comuna(id_comuna);
+
+ALTER TABLE formulario ADD FOREIGN KEY (candidato_id) REFERENCES candidato(id_candidato);
+
+
+/* ---- */
+
+INSERT INTO candidato (nombre_candidato) VALUES ("Rosa Suarez"), ("Jose Pino"), ("Sara Rodriguez"), ("Manuel Soliz"), ("Jorge Martinez");
+
+INSERT INTO region (region) VALUES ("Arica y Parinacota"), ("Tarapacá"), ("Antofagasta"),
+	("Atacama"), ("Coquimbo"), ("Valparaíso"), ("Región del Libertador Gral. Bernardo O'Higgins"),
+	("Región del Maule"), ("Región de Ñuble"), ("Región del Biobío"), ("Región de la Araucanía"),
+	("Región de los Ríos"), ("Región de los Lagos"), ("Región Aisén del Gral. Carlos Ibañez del Campo"),
+	("Región de Magallanes y de la Antártica Chilena"), ("Región Metropolitana de Santiago");
+
+INSERT INTO comuna (comuna, region_id) VALUES ("Arica", 1), ("Camarones", 1), ("Putre", 1), ("General Lagos", 1),
+	("Iquique", 2), ("Alto Hospicio", 2), ("Pozo Almonte", 2), ("Camiña", 2), ("Colchane", 2), ("Huara", 2), ("Pica", 2),
+	("Antofagasta", 3), ("Mejillones", 3), ("Sierra Gorda", 3), ("Taltal", 3), ("Calama", 3), ("Ollague", 3), 
+    ("San Pedro de Atacama", 3), ("Tocopilla", 3), ("María Elena", 3), ("Copiapó", 4), ("Caldera", 4), ("Tierra Amarrilla", 4), 
+    ("Chañaral", 4), ("Diego de Almagro", 4), ("Vallenar", 4), ("Alto del Carmen", 4), ("Freirina", 4), ("Huasco", 4), 
+    ("La Serena", 5), ("Coquimbo", 5), ("Andacollo", 5), ("La Higuera", 5), ("Paiguano", 5), ("Vicuña", 5), ("Illapel", 5), 
+    ("Canela", 5), ("Los Vilos", 5), ("Salamanca", 5), ("Ovalle", 5), ("Combarbalá", 5), ("Monte Patria", 5), ("Punitaqui", 5), 
+    ("Río Hurtado", 5), ("Valparaíso", 6), ("Casablanca", 6), ("Concón", 6), ("Juan Fernández", 6), ("Puchuncaví", 6), 
+    ("Quintero", 6), ("Viña del Mar", 6), ("Isla de Pascua", 6), ("Los Andes", 6), ("Calle Larga", 6), ("Rinconada", 6),
+	("San Esteban", 6), ("La Ligua", 6), ("Cabildo", 6), ("Papudo", 6), ("Petorca", 6), ("Zapallar", 6), ("Quillota", 6), 
+    ("Calera", 6), ("Hijuelas", 6), ("La Cruz", 6), ("Nogales", 6), ("San Antonio", 6), ("Algarrobo", 6), ("Cartagena", 6), 
+    ("El Quisco", 6), ("El Tabo", 6), ("Santo Domingo", 6), ("San Felipe", 6), ("Catemu", 6), ("Llaillay", 6), 
+    ("Panquehue", 6), ("Putaendo", 6), ("Santa María", 6), ("Quilpué", 6), ("Limache", 6), ("Olmué", 6), ("Villa Alemana", 6), 
+    ("Rancagua", 7), ("Codegua", 7), ("Coinco", 7), ("Coltauco", 7), ("Doñihue", 7), ("Graneros", 7), ("Las Cabras", 7), 
+    ("Machalí", 7), ("Malloa", 7), ("Mostazal", 7), ("Olivar", 7), ("Peumo", 7), ("Pichidegua", 7), ("Quinta de Tilcoco", 7), 
+    ("Rengo", 7), ("Requínoa", 7), ("San Vicente", 7), ("Pichilemu", 7), ("La Estrella", 7), ("Litueche", 7), ("Marchihue", 7), 
+    ("Navidad", 7), ("Paredones", 7), ("San Fernando", 7), ("Chépica", 7), ("Chimbarongo", 7), ("Lolol", 7), ("Nancahua", 7), 
+    ("Palmilla", 7), ("Peralillo", 7), ("Placilla", 7), ("Pumanque", 7), ("Santa Cruz", 7), ("Talca", 8), ("Constitución", 8), 
+    ("Curepto", 8), ("Empedrado", 8), ("Maule", 8), ("Pelarco", 8), ("Pencahue", 8), ("Río Claro", 8), ("San Clemente", 8), 
+    ("San Rafael", 8), ("Cauquenes", 8), ("Chanco", 8), ("Pelluhue", 8), ("Curicó", 8), ("Hualañe", 8), ("Licantén", 8), 
+    ("Molina", 8), ("Rauco", 8), ("Romeral", 8), ("Sagrada Familia", 8), ("Teno", 8), ("Vichuquén", 8), ("Linares", 8), 
+    ("Colbún", 8), ("Longaví", 8), ("Parral", 8), ("Retiro", 8), ("San Javier", 8), ("Villa Alegre", 8), ("Yerbas Buenas", 8),
+	("Cobquecura", 9), ("Coelemu", 9), ("Ninhue", 9), ("Portezuelo", 9), ("Quirihue", 9), ("Ránquil", 9), ("Treguaco", 9), 
+    ("Bulnes", 9), ("Chillán Viejo", 9), ("Chillán", 9), ("El Carmen", 9), ("Pemuco", 9), ("Pinto", 9), ("Quillón", 9), 
+    ("San Ignacio", 9), ("Yungay", 9), ("Coihueco", 9), ("Ñiquén", 9), ("San Carlos", 9), ("San Fabián", 9), 
+    ("San Nicolás", 9), ("Concepción", 10), ("Coronel", 10), ("Chiguayante", 10), ("Florida", 10), ("Hualqui", 10), 
+    ("Lota", 10), ("Penco", 10), ("San Pedro de la Paz", 10), ("Santa Juana", 10), ("Talcahuano", 10), ("Tomé", 10), 
+    ("Hualpén", 10), ("Lebu", 10), ("Arauco", 10), ("Cañete", 10), ("Contulmo", 10), ("Los Álamos", 10), ("Tirúa", 10), 
+    ("Los Ángeles", 10), ("Antuco", 10), ("Cabrero", 10), ("Laja", 10), ("Mulchén", 10), ("Nacimiento", 10), ("Negrete", 10), 
+    ("Quilaco", 10), ("Quilleco", 10), ("San Rosendo", 10), ("Santa Bárbara", 10), ("Tucapel", 10), ("Yumbel", 10), 
+    ("Alto Biobío", 10), ("Temuco", 11), ("Carahue", 11), ("Cunco", 11), ("Curarrehue", 11), ("Freire", 11), ("Galvarino", 11), 
+    ("Gorbea", 11), ("Lautaro", 11), ("Loncoche", 11), ("Melipeuco", 11), ("Nueva Imperial", 11), ("Padre las Casas", 11), 
+    ("Perquenco", 11), ("Pitrufquén", 11), ("Pucón", 11), ("Saavedra", 11), ("Teodoro Schmidt", 11), ("Toltén", 11), 
+    ("Vilcún", 11), ("Villarrica", 11), ("Cholchol", 11), ("Angol", 11), ("Collipulli", 11), ("Curacautín", 11), 
+    ("Ercilla", 11), ("Lonquimay", 11), ("Los Sauces", 11), ("Lumaco", 11), ("Purén", 11), ("Renaico", 11), ("Traiguén", 11), 
+    ("Victoria", 11), ("Valdivia", 12), ("Corral", 12), ("Lanco", 12), ("Los Lagos", 12), ("Máfil", 12), ("Mariquina", 12), 
+    ("Paillaco", 12), ("Panguipulli", 12), ("La Unión", 12), ("Futrono", 12), ("Lago Ranco", 12), ("Río Bueno", 12), 
+    ("Puerto Montt", 13), ("Calbuco", 13), ("Cochamó", 13), ("Fresia", 13), ("Frutillar", 13), ("Los Muermos", 13), 
+    ("Lanquihue", 13), ("Maullín", 13), ("Puerto Varas", 13), ("Castro", 13), ("Ancud", 13), ("Chonchi", 13), 
+    ("Curaco de Vélez", 13), ("Dalcahue", 13), ("Puqueldón", 13), ("Queilén", 13), ("Quellón", 13), ("Quemchi", 13), 
+    ("Quinchao", 13), ("Osorno", 13), ("Puerto Octay", 13), ("Purranque", 13), ("Puyehue", 13), ("Río Negro", 13),
+	("San Juan de la Costa", 13), ("San Pablo", 13), ("Chaitén", 13), ("Futaleufú", 13), ("Hualaihué", 13), ("Palena", 13),
+	("Coihaique", 14), ("Lago Verde", 14), ("Aisén", 14), ("Cisnes", 14), ("Guaitecas", 14), ("Cochrane", 14), 
+    ("O'Higgins", 14), ("Tortel", 14), ("Chile Chico", 14), ("Río Ibañez", 14), ("Punta Arenas", 15), ("Laguna Blanca", 15), 
+    ("Río Verde", 15), ("San Gregorio", 15), ("Cabo de Hornos", 15), ("Antártica", 15), ("Porvenir", 15), ("Primavera", 15), 
+    ("Timaukel", 15), ("Natales", 15), ("Torres del Paine", 15), ("Cerrillos", 16), ("Cerro Navia", 16), ("Conchalí", 16), 
+    ("El Bosque", 16), ("Estación Central", 16), ("Huechuraba", 16), ("Independencia", 16), ("La Cisterna", 16), 
+    ("La Florida", 16), ("La Granja", 16), ("La Pintana", 16), ("La Reina", 16), ("Las Condes", 16), ("Lo Barnechea", 16), 
+    ("Lo Espejo", 16), ("Lo Prado", 16), ("Macul", 16), ("Maipú", 16), ("Ñuñoa", 16), ("Pedro Aguirre Cerda", 16), 
+    ("Peñalolén", 16), ("Providencia", 16), ("Pudahuel", 16), ("Quilicura", 16), ("Quinta Normal", 16), ("Recoleta", 16), 
+    ("Renca", 16), ("Santiago", 16), ("San Joaquín", 16), ("San Miguel", 16), ("San Ramón", 16), ("Vitacura", 16), 
+    ("Puente Alto", 16), ("Pirque", 16), ("San José de Maipo", 16), ("Colina", 16), ("Lampa", 16), ("Tiltil", 16), 
+    ("San Bernardo", 16), ("Buin", 16), ("Calera de Tango", 16), ("Paine", 16), ("Melipilla", 16), ("Alhué", 16), 
+    ("Curacaví", 16), ("María Pinto", 16), ("San Pedro", 16), ("Talagante", 16), ("El Monte", 16), ("Isla de Maipo", 16), 
+	("Padre Hurtado", 16), ("Peñaflor", 16);
