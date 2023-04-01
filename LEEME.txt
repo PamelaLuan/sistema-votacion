@@ -24,23 +24,23 @@ PASOS DE INSTALCIÓN EN LOCAL
 
 - Dentro acceder a la carpeta 'htdocs' y crear una carpeta para proyectos PHP. En esta carpeta se guardará la carpeta raíz del proyecto.
 
-- En caso de haberla descomprimido moverla dentro de la carpeta creada. Por contrario, clonar el repositorio en la carpeta.
+- En caso de haber descargado el ZIP del proyecto, moverlo descomprimido dentro de la carpeta para proyectos PHP. Por contrario, clonar el repositorio directamente en la carpeta para proyectos PHP.
 
 
 3. Crear la base de datos que utilizará el proyecto
 
-- Dentro de la carpeta 'sql' se encuentra el script de la base de datos ha ejecutar. 
+- Dentro de la carpeta 'sql' se encuentra el script de la base de datos a ejecutar. 
  
 - Antes, se deben iniciar los procesos tanto del servidor como de la base de datos, en el panel de control de xampp. Luego dirigirse al administrador (phpMyAdmin), seleccionar la opción SQL, copiar y ejecutar el script.
 
 - La base de datos a utilizar se llama 'sistema_votacion'.
 
 
-4. Variables de conexion
+4. Variables de conexión
 
-- La conexion con la base de datos se realiza en el archivo 'conexion.php' ubicado en la carpeta 'accesoDatos'.
+- La conexión con la base de datos se realiza en el archivo 'conexion.php' ubicado en la carpeta 'accesoDatos'.
 
-- Al final del código del archivo se encuentra la función para la conexion con la base de datos. 
+- Al final del código del archivo se encuentra la función para la conexión con la base de datos. 
 
 - En mi caso utilice el usuario 'root' sin contraseña y al ser local, 'localhost'. En caso de contar con otro usuario y contraseña para acceder a la base de datos se deben modificar la variable $user y $pass.
 
@@ -51,7 +51,7 @@ PASOS DE INSTALCIÓN EN LOCAL
 
 - Donde [nombre carpeta de proyectos] se refiere a la carpeta creada para proyectos PHP en el punto 2.
 
-- En el navegador aparecerá la carpeta raiz del proyecto sistema-de-votacion. Al acceder aparecerá la página del formulario de votación.
+- En el navegador aparecerá la carpeta raíz del proyecto sistema-de-votacion. Al acceder aparecerá la página del formulario de votación.
 
 
 
@@ -64,7 +64,7 @@ El proyecto cuenta con un archivo 'index.php' y cuatro carpetas.
 
 	Carpeta 'css': contiene estilos sencillos que afectan al HTML del archivo index.php
 	
-	Carpeta 'js': contiene el código JavaScript que conecta el archivo HTML con los pocesos en PHP.
+	Carpeta 'js': contiene el código JavaScript que conecta el archivo HTML con los procesos en PHP.
 
 	Carpeta 'accesoDatos': contiene los procesos en PHP para manipular y acceder a los datos guardados en la base de datos.
 
